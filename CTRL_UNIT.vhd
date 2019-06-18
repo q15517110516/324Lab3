@@ -22,31 +22,39 @@ ARCHITECTURE BEHAV OF CTRL_UNIT IS
   BEGIN
     
     
-              PROCESS(OPCODE,DISP_OPCODE)
+              PROCESS(OPCODE,DISP_OPCODE,EN)
               BEGIN
-                   IF( OPCODE ="00")THEN  
-                        ALUOP <= "00";
-                        RFWR <= '1';
-                        WDSEL <= '0';
-                        DISPLAY_CTRL <='0';
-                   ELSIF( OPCODE ="01" )  THEN 
-                        ALUOP <= "01";
-                        RFWR <= '1';
-                        WDSEL <= '1';
-                         DISPLAY_CTRL <='0';
-                   ELSIF (OPCODE ="10")  THEN 
-                        ALUOP <= "10";
-                        RFWR <= '1';
-                        WDSEL <= '1';
-                         DISPLAY_CTRL <='0';
-                   ELSE
-                     IF (DISP_OPCODE ="111" ) THEN
-                       ALUOP <= "11";  
-                       RFWR <= '0';
-                       WDSEL <= '1';
-                        DISPLAY_CTRL <='1';
-                     END IF;                         
-                   END IF;
+		    IF (EN = '1') THEN
+                     -- IF( OPCODE ="00")THEN
+                          -- ALUOP <= "00";
+                          -- RFWR <= '1';
+                          -- WDSEL <= '0';
+                          -- DISPLAY_CTRL <='0';
+                      -- ELSIF( OPCODE ="01" )  THEN
+                          -- ALUOP <= "01";
+                          -- RFWR <= '1';
+                          -- WDSEL <= '1';
+                          -- DISPLAY_CTRL <='0';
+                       ELSIF (OPCODE ="10")  THEN 
+                           ALUOP <= "10";
+                           RFWR <= '1';
+                           WDSEL <= '1';
+                           DISPLAY_CTRL <='0';
+                      ELSE
+                          IF (DISP_OPCODE ="111" ) THEN
+                             LUOP <= "11";  
+                             RFWR <= '0';
+                             WDSEL <= '1';
+                             DISPLAY_CTRL <='1';
+                           END IF;                         
+                      END IF;
+					   ELSE	
+				               ALUOP <= "00";
+                          -- RFWR <= '0';
+                          -- WDSEL <= '0';
+                          -- DISPLAY_CTRL <='0';		
+						 
+						END IF ;
              END PROCESS;
 
 	
