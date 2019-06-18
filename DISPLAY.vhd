@@ -25,8 +25,8 @@ BEGIN
 
   PROCESS (CLK)
      variable my_line : LINE;
-	 -- variable  cnt_o  : std_logic_vector(7 downto 0):=DISP_IN;
-	--  variable value:std_logic_vector(7 downto 0):="1111";
+	variable  cnt_o  : std_logic_vector(7 downto 0):=DISP_IN;
+	variable value:std_logic_vector(7 downto 0):="1111";
      begin
 	   IF(CLK'EVENT AND CLK='0')THEN
 		    IF(DISPLAY_CTRL ='1')THEN
